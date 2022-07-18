@@ -23,6 +23,11 @@ public class CompanyController {
         return companyRepository.findById(id).orElse(null);
     }
 
+    @GetMapping(value = "/getdetailed", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Company getDetailed(@RequestParam("id") String id) {
+        return companyRepository.findByIdWithJobPosts(id).get(0);
+    }
+
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Company> list() {
         return companyRepository.findAll();

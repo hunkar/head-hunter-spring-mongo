@@ -42,4 +42,9 @@ public class JobPostController {
 
         return "ok";
     }
+
+    @GetMapping(value = "/titlelist", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<String> titlelist() {
+        return jobPostRepository.jobPostsTitleList();
+    }
 }
